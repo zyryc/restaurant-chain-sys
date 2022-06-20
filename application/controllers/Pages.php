@@ -18,9 +18,7 @@ class Pages extends CI_Controller {
         $data['restaurants'] = $this->restaurant_model->get_restaurants();
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-
+        $data['_view'] = 'pages/'.$page;
         $this->load->view('templates/header', $data);
-        $this->load->view('pages/'.$page, $data);
-        $this->load->view('templates/footer', $data);
 }
 }

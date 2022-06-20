@@ -22,10 +22,8 @@ class Food extends CI_Controller {
 
 		$data['title']= 'Restaurant list';
 		$data['restaurants'] = $this->restaurant_model->get_restaurants();
-
+		$data['_view'] = 'pages/restaurant_list';
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/restaurant_list', $data);
-		$this->load->view('templates/footer');
 	}
 
 	public function view($slug = NULL)
@@ -37,9 +35,8 @@ class Food extends CI_Controller {
 		 $data['menus'] = $this->menu_model->get_menus($slug);
 		$data['title']= 'Restaurant view';
 
+		$data['_view'] = 'pages/restaurant_view';
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/restaurant_view', $data);
-		$this->load->view('templates/footer');
 	}
 	
 	public function create()
@@ -58,9 +55,8 @@ class Food extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE)
 		{
+			$data['_view'] = 'pages/food_add';
 			$this->load->view('templates/header', $data);
-			$this->load->view('pages/food_add');
-			$this->load->view('templates/footer');
 
 		}
 		else

@@ -15,10 +15,8 @@ class Cart extends CI_Controller {
 	{
         $data['title'] = "My cart";
         $data['data'] = $this->cart->contents();
-        $page="cart";
+        $data['_view']="pages/cart";
         $this->load->view('templates/header', $data);
-        $this->load->view('pages/'.$page, $data);
-        $this->load->view('templates/footer', $data);
 
 	}
 

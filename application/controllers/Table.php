@@ -22,10 +22,9 @@ class Table extends CI_Controller {
             'id' => $this->session->userdata('userId') 
         );
            $data['user'] = $this->auth_model->getRows($con); 
-        
+
+           $data['_view'] = 'table/book_table';      
            $this->load->view('templates/header', $data);
-           $this->load->view('pages/book_table', $data);
-           $this->load->view('templates/footer');
        
                
         }
@@ -50,18 +49,16 @@ class Table extends CI_Controller {
                 {
                     $this->session->set_flashdata('error', 'Failed, Try again');
  
+                    $data['_view'] = 'table/book_table';
            $this->load->view('templates/header', $data);
-           $this->load->view('pages/book_table', $data);
-           $this->load->view('templates/footer');
                 }
                 else
                 {
                     $this->session->set_flashdata('success', 'Booked succefully');
 
                     $this->table_model->create_book();
+                    $data['_view'] = 'table/book_table';
                     $this->load->view('templates/header', $data);
-                    $this->load->view('pages/book_table', $data);
-                    $this->load->view('templates/footer');
                 }
         }
 }

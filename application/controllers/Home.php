@@ -17,9 +17,8 @@ class Home extends CI_Controller {
 		$data['title']= 'Restaurant list';
 		$data['restaurants'] = $this->restaurant_model->get_restaurants();
 
+		$data['_view'] = 'pages/restaurant_list';
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/restaurant_list', $data);
-		$this->load->view('templates/footer');
 	}
 	public function home($slug)
 	{
@@ -29,9 +28,8 @@ class Home extends CI_Controller {
 		 $data['food'] = $this->food_model->get_food($slug);
 		$data['title']= 'Restaurant list';
 
+		$data['_view'] = 'pages/restaurant_home';
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/restaurant_home', $data);
-		$this->load->view('templates/footer');
 
 	}
 
@@ -43,10 +41,9 @@ class Home extends CI_Controller {
 		 $data['item'] = $this->restaurant_model->get_restaurants($slug);
 		 $data['menus'] = $this->menu_model->get_menus($slug);
 		$data['title']= 'Restaurant view';
-
+		
+		$data['_view'] = 'pages/restaurant_view';
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/restaurant_view', $data);
-		$this->load->view('templates/footer');
 	}
 
 	public function create()
@@ -63,9 +60,8 @@ class Home extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE)
 		{
+			$data['_view'] = 'pages/new_restaurant';
 			$this->load->view('templates/header', $data);
-			$this->load->view('pages/new_restaurant');
-			$this->load->view('templates/footer');
 
 		}
 		else
@@ -85,9 +81,8 @@ class Home extends CI_Controller {
 	$errors = array('errors' => $this->upload->display_errors());
 
 	$this->session->set_flashdata('error', 'wronng image type');
+	$data['_view'] = 'pages/new_restaurant';
 	 $this->load->view('templates/header', $data);
-	 $this->load->view('pages/new_restaurant');
-	 $this->load->view('templates/footer');
 	 
    }
    // body of else clause will be executed when image uploading is succeeded
@@ -102,9 +97,8 @@ class Home extends CI_Controller {
 
 	 $this->session->set_flashdata('success', 'Restaurant succefully');
 
+	 $data['_view'] = 'pages/new_restaurant';
 	 $this->load->view('templates/header', $data);
-	 $this->load->view('pages/new_restaurant');
-	 $this->load->view('templates/footer');
     
    }
 			//redirect('');

@@ -33,9 +33,8 @@ class Auth extends CI_Controller {
             $data['user'] = $this->auth_model->getRows($con); 
              
             // Pass the user data and load view 
+            $data['_view'] = 'users/account';
             $this->load->view('templates/header', $data); 
-            $this->load->view('users/account', $data); 
-            $this->load->view('templates/footer'); 
         }else{ 
             redirect('auth/login'); 
         } 
@@ -80,7 +79,7 @@ class Auth extends CI_Controller {
                 if($checkLogin){ 
                     $this->session->set_userdata('isUserLoggedIn', TRUE); 
                     $this->session->set_userdata('userId', $checkLogin['id']); 
-                    redirect('restaurant/'); 
+                    redirect('/'); 
                 }else{ 
                     $data['error_msg'] = 'Wrong email or password, please try again.'; 
                 } 
@@ -89,11 +88,10 @@ class Auth extends CI_Controller {
             } 
         } 
     $data['title'] = "Login"; 
+        $data['_view']='users/login'; 
          
         // Load view 
         $this->load->view('templates/header', $data); 
-        $this->load->view('users/login', $data); 
-        $this->load->view('templates/footer'); 
     } 
  
     public function registration(){ 
@@ -133,9 +131,8 @@ class Auth extends CI_Controller {
         $data['user'] = $userData; 
          
         // Load view 
+        $data['_view'] = 'users/registration';
         $this->load->view('templates/header', $data); 
-        $this->load->view('users/registration', $data); 
-        $this->load->view('templates/footer'); 
     } 
      
     public function logout(){ 

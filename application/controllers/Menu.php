@@ -20,9 +20,8 @@ class Menu extends CI_Controller {
 
 
     $page="menu";
+    $data['_view']="pages/menu";
     $this->load->view('templates/header', $data);
-    $this->load->view('pages/'.$page, $data);
-    $this->load->view('templates/footer', $data);
   }
 	public function create(){
     $this->load->helper('form');
