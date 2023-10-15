@@ -78,7 +78,9 @@ class Auth extends CI_Controller {
                 $checkLogin = $this->auth_model->getRows($con); 
                 if($checkLogin){ 
                     $this->session->set_userdata('isUserLoggedIn', TRUE); 
-                    $this->session->set_userdata('userId', $checkLogin['id']); 
+                    $this->session->set_userdata('userId', $checkLogin['id']);
+                    $this->session->set_userdata('admin', ($checkLogin['role'] == 1) ? true : false);
+
                     redirect('/'); 
                 }else{ 
                     $data['error_msg'] = 'Wrong email or password, please try again.'; 

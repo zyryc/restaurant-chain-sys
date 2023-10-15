@@ -7,24 +7,24 @@ class Restaurant_model extends CI_Model {
 
         }
 	public function get_restaurants($slug = FALSE)
-{
-        if ($slug === FALSE)
-        {
-                $query = $this->db->get('restaurants');
-                return $query->result_array();
-		}
+	{
+			if ($slug === FALSE)
+			{
+					$query = $this->db->get('restaurants');
+					return $query->result_array();
+			}
 
-		$this->db->select('*');    
-$this->db->from('restaurants');
-$this->db->where('slug', $slug);
+			$this->db->select('*');    
+			$this->db->from('restaurants');
+			$this->db->where('slug', $slug);
 
-$query = $this->db->get();
+			$query = $this->db->get();
 
 
-      //  $query = $this->db->get_where('restaurants', array('slug' => $slug));
-		// return $query->result_array();
-		return $query->row_array();
-}
+		//  $query = $this->db->get_where('restaurants', array('slug' => $slug));
+			// return $query->result_array();
+			return $query->row_array();
+	}
 
 	public function new_restaurant($data)
 	{

@@ -6,7 +6,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('restaurant_model');
 		$this->load->model('menu_model');
-		$this->load->model('food_model');
+		$this->load->model('Foods_model');
 	}
 
 	public function index()
@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 
 		 $data['restaurant'] = $this->restaurant_model->get_restaurants($slug);
 		 $data['menuslist'] = $this->menu_model->get_menus($slug);
-		 $data['food'] = $this->food_model->get_food($slug);
+		 $data['food'] = $this->Foods_model->get_food($slug);
 		$data['title']= 'Restaurant list';
 
 		$data['_view'] = 'pages/restaurant_home';

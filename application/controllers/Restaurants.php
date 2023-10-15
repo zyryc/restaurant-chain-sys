@@ -4,10 +4,11 @@ class Restaurants extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
 		 // Load cart library
         $this->load->library('cart');
 		$this->load->model('restaurant_model');
-		$this->load->model('food_model');
+		$this->load->model('Foods_model');
 		$this->load->model('menu_model');
 		$this->load->helper('url_helper');
 		$user_id = $this->session->userdata('userId');
@@ -35,6 +36,7 @@ class Restaurants extends CI_Controller {
 
 		$myJSON = json_encode( $this->restaurant_model->get_restaurants());
 
+		// print_r($myJSON);
 		echo $myJSON;
 	}
 

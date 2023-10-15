@@ -1,18 +1,24 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Dashboard extends CI_Controller {
-
-    public function __construct()
+/* 
+ * by Zyrc
+ */
+ 
+class Dashboard extends CI_Controller{
+    function __construct()
     {
         parent::__construct();
-        //Load Dependencies
-        // $this->load->model('Dashboard_model');
-    }
-    public function index()
-    {
-        echo "Dashboard";
+        $user_id = $this->session->userdata('userId');
+        $admin = $this->session->userdata('admin');
+		if($user_id == NULL && $admin==false ){redirect('auth/login');} 
+        $this->load->model('Table_booking_model');
         
     }
 
+    function index()
+    {
+        $admin = $this->session->userdata('admin');
+        
+        $data['_view'] = 'admin/dashboard';
+        $this->load->view('admin/layouts/main',$data);
+    }
 }

@@ -7,7 +7,7 @@ class Food extends CI_Controller {
 		 // Load cart library
         $this->load->library('cart');
 		$this->load->model('restaurant_model');
-		$this->load->model('food_model');
+		$this->load->model('Foods_model');
 		$this->load->model('menu_model');
 		$this->load->helper('url_helper');
 		$user_id = $this->session->userdata('userId');
@@ -85,7 +85,7 @@ class Food extends CI_Controller {
 
 	
 	 //store pic data to the db
-	 $this->food_model->addfood($data);
+	 $this->Foods_model->addfood($data);
 	 $this->session->set_flashdata('success', 'Successfully added');
 
 	 redirect('food/create');

@@ -49,8 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+// routes for customers.
+
+
+
 $route['restaurant/create'] = 'restaurant/create';
 $route['restaurant/(:any)'] = 'restaurant/view/$1';
 $route['restaurant'] = 'restaurant';
 $route['default_controller'] = 'pages/view';
+
+$route['manage-customers']="admin/Customers/ManageCustomers";
+$route['change-status-customers/(:num)']="admin/Customers/changeStatusCustomers/$1";
+$route['edit-customers/(:num)']="admin/Customers/editCustomers/$1";
+$route['edit-customers-post']="admin/Customers/editCustomersPost";
+$route['delete-customers/(:num)']="admin/Customers/deleteCustomers/$1";
+$route['add-customers']="admin/Customers/addCustomers";
+$route['add-customers-post']="admin/Customers/addCustomersPost";
+$route['view-customers/(:num)']="admin/Customers/viewCustomers/$1";
+
 $route['translate_uri_dashes'] = FALSE;
